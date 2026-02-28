@@ -117,38 +117,84 @@ h1, h2, h3 {
   flex-wrap: wrap;
 }
 
+/* BOTÕES MELHORADOS */
+
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.6rem;
-  padding: 1rem 1.8rem;
+  padding: 1rem 2rem;
   font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
   border-radius: 50px;
+  overflow: hidden;
   transition: all 0.3s ease;
-  border: 2px solid transparent;
+  transform: translateY(0);
+  border: none;
+  cursor: pointer;
 }
 
+/* Efeito brilho animado */
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+/* Efeito hover geral */
+.btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Efeito clique */
+.btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* WhatsApp */
 .btn-whatsapp {
-  background: #25D366;
+  background: linear-gradient(45deg, #25D366, #1ebe5d);
   color: white;
 }
 
 .btn-whatsapp:hover {
-  background: #20b858;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(37,213,102,0.3);
+  box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
 }
 
+/* Instagram */
 .btn-instagram {
   background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  background-size: 200% 200%;
+  animation: instagramGradient 4s ease infinite;
   color: white;
 }
 
+@keyframes instagramGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .btn-instagram:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(188,24,136,0.3);
+  box-shadow: 0 15px 40px rgba(188, 24, 136, 0.4);
 }
 
 /* Seções */
